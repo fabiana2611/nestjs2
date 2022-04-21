@@ -28,6 +28,9 @@
 
 Projects created to the nest study. More details you can go inside each project.
 
+- messages - simple version with only one module and its components(module, service, controller, decorator, dto, repository [file])
+- messages-level-2 - adding more components and complexity
+
 
 ## Support
 
