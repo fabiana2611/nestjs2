@@ -45,6 +45,12 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Access
+
+```bash
+http://localhost:3000/messages
+```
+
 ## Test
 
 ```bash
