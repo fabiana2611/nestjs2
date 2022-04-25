@@ -26,9 +26,9 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-This project has decorators, service, repository, interceptors and guard.
-
-The project use the messages.json as source of data.
+- This project has decorators, service, repository, interceptors and guard.
+- The project use the messages.json as source of data.
+- The post regarding the project is [here](https://fabiana2611.github.io/node/nestjs)
 
 ## Installation
 
