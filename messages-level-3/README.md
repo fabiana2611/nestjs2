@@ -26,6 +26,11 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+Projects created to the nest study. More details you can go inside each project.
+
+- messages-level-3 - go deeper inside some components and go around cookies, guards, sessions.
+
+
 ## Installation
 
 ```bash

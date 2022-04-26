@@ -30,6 +30,7 @@ Projects created to the nest study. More details you can go inside each project.
 
 - messages - simple version with only one module and its components(module, service, controller, decorator, dto, repository [file])
 - messages-level-2 - adding more components and complexity
+- messages-level-3 - go deeper inside some components and go around cookies, guards, sessions.
 
 The post regarding the project is [here](https://fabiana2611.github.io/node/nestjs)
 
