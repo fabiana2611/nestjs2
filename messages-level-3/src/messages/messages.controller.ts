@@ -90,7 +90,7 @@ export class MessagesController {
 
   @Get('/auth/test')
   authTest() {
-    this.authService.signin('test@test', '123');
+    this.authService.test('test@test', '123');
   }
 
   @Get('/exception/test')
