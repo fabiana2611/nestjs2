@@ -4,9 +4,10 @@ import { MessagesController } from './messages.controller';
 import { MessagesRepository } from './messages.repository';
 import { MessagesMiddleware } from './middleware/messages.middleware';
 import { AuthModule } from '../auth/auth.module';
+import { ConfigModule } from '../config/config.module';
 
 @Module({
-  imports: [AuthModule],
+  imports: [AuthModule, ConfigModule.register({ attribute: 'staging' })],
   providers: [MessagesService, MessagesRepository],
   /**
    *   Study Notes:

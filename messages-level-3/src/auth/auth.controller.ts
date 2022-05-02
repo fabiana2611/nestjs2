@@ -30,7 +30,7 @@ export class AuthController {
     console.log(request.signedCookies);
   }
 
-  @Post('/signup')
+  @Post('/v1/signup')
   async signup(@Body() body: CreateUserDto, @Session() session: any) {
     // # Simple test
     // this.userService.create(body.email, body.password);
@@ -42,7 +42,7 @@ export class AuthController {
     return user;
   }
 
-  @Post('/signin')
+  @Post('/v1/signin')
   async signin(@Body() body: CreateUserDto, @Session() session: any) {
     // # Test with auth
     // return this.authService.signin(body.email, body.password);
@@ -51,4 +51,33 @@ export class AuthController {
     session.userId = user.id;
     return user;
   }
+
+  @Post('/v2/signup')
+  async signupV2(@Body() body: CreateUserDto, @Session() session: any) {
+    const user = await this.authService.signupV2(body.email, body.password);
+    session.userId = user.id;
+    return user;
+  }
+
+  @Post('/v2/signin')
+  async signinV2(@Body() body: CreateUserDto, @Session() session: any) {
+    const user = await this.authService.signinV2(body.email, body.password);
+    session.userId = user.id;
+    return user;
+  }
+
+  @Post('/v3/signup')
+  async signupV3(@Body() body: CreateUserDto, @Session() session: any) {
+    const user = await this.authService.signupV3(body.email, body.password);
+    session.userId = user.id;
+    return user;
+  }
+
+  @Post('/v3/signin')
+  async signinV3(@Body() body: CreateUserDto, @Session() session: any) {
+    const user = await this.authService.signinV3(body.email, body.password);
+    session.userId = user.id;
+    return user;
+  }
+
 }
