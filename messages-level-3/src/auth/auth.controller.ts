@@ -1,13 +1,24 @@
-import { Body, Controller, Get, Param, Post, Req, Session } from "@nestjs/common";
-import { Request } from 'express';
-import { CreateUserDto } from "../users/dto/create-user.dto";
-import { AuthService } from "./auth.service";
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Req,
+  Session,
+  UseGuards,
+  Request as NestRequest,
+} from '@nestjs/common';
+import { Request as ExpressRequest } from 'express';
+import { CreateUserDto } from '../users/dto/create-user.dto';
+import { AuthService } from './auth.service';
+import { AuthGuard } from '@nestjs/passport';
+import { JwtAuthGuard } from '../guard/jwt-auth.guard';
+import { Public } from "../config/public.decorator";
 
 @Controller('auth')
 export class AuthController {
-
-  constructor(private authService: AuthService) {
-  }
+  constructor(private authService: AuthService) {}
 
   // #1
   @Get('/chats')
@@ -21,7 +32,7 @@ export class AuthController {
   }
 
   @Get()
-  findAll(@Req() request: Request) {
+  findAll(@Req() request: ExpressRequest) {
     console.log('1: ');
     console.log(request.cookies);
     console.log('2: ');
@@ -80,4 +91,20 @@ export class AuthController {
     return user;
   }
 
+  /**
+   * Ref: https://docs.nestjs.com/security/authentication#login-route
+   */
+  @UseGuards(AuthGuard('local')) //provisioned when we extended the passport-local strategy
+  @Post('/login')
+  async login(@NestRequest() req) {
+    // return req.user;
+    return this.authService.login(req.user);
+  }
+
+  @Public()
+  @UseGuards(JwtAuthGuard)
+  @Get('/profile')
+  async getProfile(@NestRequest() req) {
+    return req.user;
+  }
 }

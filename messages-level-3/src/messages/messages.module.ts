@@ -8,7 +8,6 @@ import { ConfigModule } from '../config/config.module';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 
-
 @Module({
   imports: [
     AuthModule,

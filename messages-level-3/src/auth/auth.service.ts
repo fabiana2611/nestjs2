@@ -5,10 +5,13 @@ import {
 } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { AuthUtil } from './auth.util';
+import { JwtService } from "@nestjs/jwt";
 
 @Injectable()
 export class AuthService {
-  constructor(private userService: UsersService, private authUtil: AuthUtil) {}
+  constructor(private userService: UsersService, private authUtil: AuthUtil,
+              private jwtService: JwtService) {
+  }
 
   test(email: string, password: string) {
     console.log('--> Start AuthService signin...');
@@ -106,5 +109,25 @@ export class AuthService {
     }
 
     return user;
+  }
+
+  //https://docs.nestjs.com/security/authentication#jwt-functionality
+  async login(user: any) {
+    const payload = { username: user.username, sub: user.userId };
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
+  }
+
+  /**
+   * Reference: https://docs.nestjs.com/security/authentication#implementing-passport-strategies
+   */
+  async validateUser(username: string, pass: string): Promise<any> {
+    const user = await this.userService.findOne(username);
+    if (user && user.password === pass) {
+      const { password, ...result } = user;
+      return result;
+    }
+    return null;
   }
 }
