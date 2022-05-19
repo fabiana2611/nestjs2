@@ -1,16 +1,28 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { Cron, CronExpression, Interval, SchedulerRegistry, Timeout } from "@nestjs/schedule";
-import { CronJob } from "cron";
+import {
+  Cron,
+  CronExpression,
+  Interval,
+  SchedulerRegistry,
+  Timeout,
+} from '@nestjs/schedule';
+import { CronJob } from 'cron';
 
 @Injectable()
 export class TaskService {
   private readonly logger = new Logger(TaskService.name);
 
+  private static time = 2;
+  private static quantity = 3;
+  private static limit = TaskService.time * TaskService.quantity;
+  private nameTask = '### TESTE  3 Times ###';
+
   constructor(private schedulerRegistry: SchedulerRegistry) {
     setTimeout(() => {
       this.stopJob();
       this.addCronJon('newJob', '4');
-    }, 5000);
+      this.threeTimes();
+    }, 1000);
   }
 
   // (second | minutes | hours | day of month | months | day of week)
@@ -64,8 +76,8 @@ export class TaskService {
     this.logger.log(job.lastDate());
   }
 
-  addCronJon(name: string, seconds: string) {
-    const job = new CronJob(`${seconds} * * * * *`, () => {
+  addCronJon(name: string, seconds: string, limit?: number) {
+    const job = new CronJob(`*/${seconds} * * * * *`, () => {
       this.logger.warn(`time (${seconds} for job ${name} to run!`);
     });
 
@@ -75,5 +87,19 @@ export class TaskService {
     this.logger.warn(
       `job ${name} added for each minute at ${seconds} seconds!`,
     );
+  }
+
+  threeTimes() {
+    this.addCronJon(
+      this.nameTask,
+      TaskService.time.toString(),
+      TaskService.quantity,
+    );
+  }
+
+  @Timeout(TaskService.limit * 1000)
+  threeTimesTimeout() {
+    this.schedulerRegistry.deleteCronJob(this.nameTask);
+    this.logger.warn(`job ${this.nameTask} deleted!`);
   }
 }
