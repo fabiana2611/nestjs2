@@ -15,7 +15,7 @@ export class TaskService {
   private static time = 2;
   private static quantity = 3;
   private static limit = TaskService.time * TaskService.quantity;
-  private nameTask = '### TESTE  3 Times ###';
+  private nameTask = 'MY_TASK';
 
   constructor(private schedulerRegistry: SchedulerRegistry) {
     setTimeout(() => {
@@ -97,7 +97,7 @@ export class TaskService {
     );
   }
 
-  @Timeout(TaskService.limit * 1000)
+  @Timeout(TaskService.limit * 1000 + 1000)
   threeTimesTimeout() {
     this.schedulerRegistry.deleteCronJob(this.nameTask);
     this.logger.warn(`job ${this.nameTask} deleted!`);
