@@ -102,4 +102,10 @@ export class TaskService {
     this.schedulerRegistry.deleteCronJob(this.nameTask);
     this.logger.warn(`job ${this.nameTask} deleted!`);
   }
+
+  // Cannot use environment variable direactly
+  // @Cron(process.env.CRON_TIME)
+  // testUsingEnvEnvironment() {
+  //   this.logger.log('Test by environment...');
+  // }
 }

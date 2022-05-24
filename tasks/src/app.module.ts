@@ -3,9 +3,15 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TaskModule } from './task/task.module';
+import { ConfigModule } from '@nestjs/config';
+
 
 @Module({
-  imports: [ScheduleModule.forRoot(), TaskModule],
+  imports: [
+    // ConfigModule.forRoot({ isGlobal: true }),
+    ScheduleModule.forRoot(),
+    TaskModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
