@@ -26,6 +26,10 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Posts
+
+- [NestJS - Database](https://fabiana2611.github.io/node/nestjs-database)
+
 ## Installation
 
 ```bash
