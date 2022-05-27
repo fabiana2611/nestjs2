@@ -26,13 +26,22 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-Projects created to the nest study. More details you can go inside each project.
+The nestjs Project is the main folder of a collection of projects created to support the studies.
 
 - messages - simple version with only one module and its components(module, service, controller, decorator, dto, repository [file])
 - messages-level-2 - adding more components and complexity
 - messages-level-3 - go deeper inside some components and go around cookies, guards, sessions.
+- tasks - cron job using schedule
+- database* - basic configuration to the use of libraries to access database
 
-The post regarding the project is [here](https://fabiana2611.github.io/node/nestjs)
+
+## Posts
+
+- [NestJS - using the main components](https://fabiana2611.github.io/node/nestjs)
+- [NestJS - components part II](https://fabiana2611.github.io/node/nestjs-advanced)
+- [NestJS - Security](https://fabiana2611.github.io/node/nestjs-security)
+- [NestJS - Cron Job](https://fabiana2611.github.io/node/nestjs-cronjob)
+- [NestJS - Database](https://fabiana2611.github.io/node/nestjs-database)
 
 
 ## Support
