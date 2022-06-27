@@ -26,6 +26,12 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+This project is part of my study about nest.
+
+## Post
+
+- [NestJS - Cron Job](https://fabiana2611.github.io/node/nestjs-cronjob)
+
 ## Installation
 
 ```bash
