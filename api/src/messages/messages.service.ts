@@ -8,4 +8,8 @@ export class MessagesService {
   findAllMessages() {
     return this.messageRepository.findAll();
   }
+
+  async create(content: string) {
+    return this.messageRepository.create(content);
+  }
 }

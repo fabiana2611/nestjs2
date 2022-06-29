@@ -5,6 +5,9 @@ import { MessagesService } from './messages.service';
 export class MessagesController {
   constructor(private messageService: MessagesService) {}
 
+  /**
+   * Return all messages
+   */
   @Get()
   async findAll() {
     return await this.messageService.findAllMessages();
